@@ -28,6 +28,7 @@ import helperfinhub
 import helperalphavantage
 import helpercode
 import helperstreamlit
+import helpercourtlistener
 
 import evaluationagent
 import gemini20handler
@@ -127,6 +128,13 @@ def handle_external_function(api_requests_and_responses, params, function_name):
     if function_name in helperalphavantage.function_handler.keys():
         logger.warning("alpha vantage function found")
         api_response = helperalphavantage.function_handler[function_name](params)
+        api_requests_and_responses.append(
+                                [function_name, params, api_response]
+                        )
+    
+    if function_name in helpercourtlistener.function_handler.keys():
+        logger.warning("Courtlistener function found")
+        api_response = helpercourtlistener.function_handler[function_name](params)
         api_requests_and_responses.append(
                                 [function_name, params, api_response]
                         )
