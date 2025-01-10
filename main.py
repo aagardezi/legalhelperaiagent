@@ -358,7 +358,7 @@ def authenticate_user(logger, PROJECT_ID, USE_AUTHENTICATION):
         logger.warning("Auth Starting")
         time.sleep(5)
         authenticator.check_authentification()
-        st.logo("images/mmlogo1.png")
+        st.logo("images/lmlogo.png")
     # Create the login button
         authenticator.login()
     return authenticator
@@ -386,7 +386,7 @@ def init_chat_session(client, model):
 
 def display_sidebar(logger, view_systeminstruction, USE_AUTHENTICATION, get_chat_history, init_chat_session, authenticator):
     with st.sidebar:
-        st.logo("images/mmlogo1.png")
+        st.logo("images/lmlogo.png")
         if USE_AUTHENTICATION:
             st.image(st.session_state['user_info'].get('picture'))
             if st.button('Log out'):
@@ -497,7 +497,7 @@ if st.session_state['connected'] or not USE_AUTHENTICATION:
         #     # logger.warning(f"""In initialiser function model name is {st.session_state.modelname}""")
         # else:
         
-        st.image("images/mmlogo1.png")
+        st.image("images/lmlogo.png")
         if USE_AUTHENTICATION:
             st.title(f"""{st.session_state['user_info'].get('name')}! MarketMind: built using {st.session_state.modelname}""")
         else:
