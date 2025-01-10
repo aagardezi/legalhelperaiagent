@@ -76,7 +76,8 @@ def search_case(params):
             results.append({'absolute_url': f"https://www.courtlistener.com{result['absolute_url']}",
                             'caseName': result['caseName'],
                             'docket_id': result['docket_id'],
-                            'caseData': summarise_case(f"https://www.courtlistener.com{result['opinions'][0]['local_path'] }")
+                            'casedataurl': f"https://www.courtlistener.com/{result['opinions'][0]['local_path']}",
+                            'caseData': summarise_case(f"https://www.courtlistener.com/{result['opinions'][0]['local_path']}")
                             })
         if response.json()['next']:
             response = requests.get(response.json()['next'], headers=headers)
