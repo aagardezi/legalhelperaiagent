@@ -60,8 +60,8 @@ generate_config_20 = types.GenerateContentConfig(
     system_instruction=[types.Part.from_text(SYSTEM_INSTRUCTION)],
 )
 
-def search_case(querystring, date):
-    url =  f"https://www.courtlistener.com/api/rest/v4/search/?q={urllib.parse.quote(querystring)}&type=o&order_by=score%20desc&stat_Published=on&filed_after={urllib.parse.quote(date)}"
+def search_case(params):
+    url =  f"https://www.courtlistener.com/api/rest/v4/search/?q={urllib.parse.quote(params['querystring'])}&type=o&order_by=score%20desc&stat_Published=on&filed_after={urllib.parse.quote(params['date'])}"
 
     headers = {
         "Authorization": AUTH
