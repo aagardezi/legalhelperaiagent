@@ -499,11 +499,11 @@ if st.session_state['connected'] or not USE_AUTHENTICATION:
         
         st.image("images/lmlogo.png")
         if USE_AUTHENTICATION:
-            st.title(f"""{st.session_state['user_info'].get('name')}! MarketMind: built using {st.session_state.modelname}""")
+            st.title(f"""{st.session_state['user_info'].get('name')}! LegalMind: built using {st.session_state.modelname}""")
         else:
-            st.title(f"""MarketMind: built using {st.session_state.modelname}""")
+            st.title(f"""LegalMind: built using {st.session_state.modelname}""")
         
-        st.caption(f"Currently only available for US Securities -- {helpercode._get_session().id}")
+        st.caption(f"Currently only available for US Courts -- {helpercode._get_session().id}")
 
         # if "sessioncount" not in st.session_state:
         #     st.session_state.sessioncount = 0
