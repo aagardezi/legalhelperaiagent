@@ -6,6 +6,9 @@ from google.cloud import secretmanager
 import google.auth
 import datetime
 import hashlib
+import pymupdf
+import io
+
 
 
 logger = logging.getLogger("MarketMind")
@@ -37,6 +40,34 @@ logger = logging.getLogger("MarketMind")
 #     except requests.exceptions.RequestException as e:
 #         print(f"Error fetching URL: {e}")
 #         return ""
+
+def get_pdf_text(pdf_url):
+    """
+    Fetches a PDF from a URL and extracts its text content.
+
+    Args:
+        pdf_url: The URL of the PDF file.
+
+    Returns:
+        A string containing the extracted text.
+    """
+    try:
+        response = requests.get(pdf_url)
+        response.raise_for_status()  # Raise an exception for bad status codes
+
+        with pymupdf.open(stream=io.BytesIO(response.content)) as doc:
+            text = ""
+            for page in doc:
+                text += page.get_text()
+            return text
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error downloading PDF: {e}")
+        return None
+    except Exception as e:
+        print(f"Error extracting text: {e}")
+        return None
+
 
 def get_text_from_url(url, auth=None):
     try:

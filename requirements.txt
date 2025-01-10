@@ -16,3 +16,4 @@ streamlit_float
 google-genai
 streamlit-pills
 google-cloud-pubsub
+pymupdf
