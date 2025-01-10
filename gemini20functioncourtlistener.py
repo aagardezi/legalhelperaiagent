@@ -8,7 +8,7 @@ search_case = dict(
                 "type": "STRING",
                 "description": "The search string to use to find cases",
             },
-            "from_date": {
+            "date": {
                 "type": "STRING",
                 "description": "Start date to search for cases"
             },
