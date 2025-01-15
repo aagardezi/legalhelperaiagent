@@ -86,7 +86,8 @@ def search_case(params):
     return results
 
 def summarise_case(url):
-    casetxt = helpercode.get_pdf_text(url)
+    # casetxt = helpercode.get_pdf_text(url)
+    casetxt = helpercode.get_text_from_url(url)
     return casetxt
 
 def summarise_cases(urls):
