@@ -85,7 +85,10 @@ def search_case(params):
             response = requests.get(response.json()['next'], headers=headers)
         else:
             break
-    logger.warning(f"Records found in the data = {recordcount})")
+
+    logger.warning(f"Records found in the data = {recordcount} vs {len(results)}")
+
+    logger.warning(f"Here are the records: {results}")
     return results
 
 def summarise_case(url):
