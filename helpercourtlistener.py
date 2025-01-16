@@ -71,6 +71,7 @@ def search_case(params):
     if response.status_code != 200:
         return None
     results = []
+    recordcount = 0
     while True:
         for result in response.json()['results']:
             results.append({'absolute_url': f"https://www.courtlistener.com{result['absolute_url']}",
@@ -79,10 +80,12 @@ def search_case(params):
                             'casedataurl': f"https://www.courtlistener.com/{result['opinions'][0]['local_path']}",
                             'caseData': summarise_case(f"https://www.courtlistener.com{result['absolute_url']}")
                             })
+            recordcount += 1
         if response.json()['next']:
             response = requests.get(response.json()['next'], headers=headers)
         else:
             break
+    logger.warning(f"Records found in the data = {recordcount})")
     return results
 
 def summarise_case(url):
