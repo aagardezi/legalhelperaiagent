@@ -1,5 +1,5 @@
 import helpercode
 
-pagetext = helpercode.get_text_from_url('https://www.courtlistener.com/opinion/10310569/abramowitz-v-stephen-p-esposito-md-pc/')
+pagetext = helpercode.get_pdf_text('https://www.courtlistener.com/pdf/2024/11/25/capstone_logistics_v._nlrb.pdf')
 
 print(pagetext)
