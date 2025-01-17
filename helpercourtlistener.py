@@ -78,7 +78,7 @@ def search_case(params):
                             'caseName': result['caseName'],
                             'docket_id': result['docket_id'],
                             'casedataurl': f"https://www.courtlistener.com/{result['opinions'][0]['local_path']}",
-                            'caseData': summarise_case(f"https://www.courtlistener.com/{result['opinions'][0]['local_path']}")
+                            'caseData': summarise_case(f"https://www.courtlistener.com{result['absolute_url']}")
                             })
             recordcount += 1
         if response.json()['next']:
@@ -92,8 +92,8 @@ def search_case(params):
     return results
 
 def summarise_case(url):
-    casetxt = helpercode.get_pdf_text(url)
-    # casetxt = helpercode.get_text_from_url(url)
+    # casetxt = helpercode.get_pdf_text(url)
+    casetxt = helpercode.get_text_from_url(url)
     return casetxt
 
 def summarise_cases(urls):
